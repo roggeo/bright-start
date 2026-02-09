@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bright Start — Aprendizado com Tecnologia</title>
+  <meta name="description" content="O Bright Start ajuda estudantes a aprender mais usando tecnologia, com recursos simples, vídeos e suporte." />
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.14);
+      --accent: #7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 700px at 15% 10%, rgba(125,211,252,.22), transparent 60%),
+        radial-gradient(900px 650px at 85% 5%, rgba(167,139,250,.18), transparent 55%),
+        radial-gradient(900px 650px at 50% 110%, rgba(125,211,252,.10), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(255,255,255,.10) 45%, transparent 55%),
+        linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+      box-shadow: 0 10px 26px rgba(125,211,252,.18);
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .navlinks{display:flex; gap:14px; align-items:center; flex-wrap:wrap;}
+    .navlinks a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .navlinks a:hover{
+      color:var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .cta{
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:999px;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+      color:#071225;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+      white-space:nowrap;
+    }
+
+    .hero{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-main{
+      padding:28px 26px;
+      position:relative;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-weight:650;
+      font-size: 13px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(125,211,252,.14);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height:1.1;
+      letter-spacing:-.02em;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size: clamp(15px, 1.6vw, 18px);
+      max-width: 62ch;
+    }
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;}
+    .btn{
+      text-decoration:none;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:750;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn strong{font-weight:900}
+    .btn:hover{background: rgba(255,255,255,.07)}
+    .btn.primary{
+      border-color: rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+      color:#071225;
+    }
+    .btn.primary:hover{filter: brightness(1.02)}
+    .hint{
+      margin-top:14px;
+      color: rgba(255,255,255,.66);
+      font-size: 13px;
+    }
+
+    .hero-side{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      background:
+        radial-gradient(400px 240px at 30% 10%, rgba(125,211,252,.20), transparent 60%),
+        rgba(255,255,255,.05);
+    }
+    .mini{
+      padding:14px 14px 12px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+    }
+    .mini h3{margin:0 0 6px; font-size: 14px; letter-spacing:.2px;}
+    .mini p{margin:0; color:var(--muted); font-size: 13px;}
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .tag{
+      font-size:12px;
+      color: rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      padding:18px 18px 16px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 14px 44px rgba(0,0,0,.25);
+    }
+    .icon{
+      width:38px; height:38px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(125,211,252,.35), rgba(167,139,250,.25));
+      display:grid; place-items:center;
+      margin-bottom:10px;
+    }
+    .card h2{
+      margin:0 0 8px;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .card p{margin:0; color:var(--muted); font-size: 14px;}
+
+    .section{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .section .card{height:100%;}
+    .list{
+      margin:10px 0 0;
+      padding:0 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .list li{margin:8px 0}
+    .callout{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: var(--card2);
+      color: rgba(255,255,255,.84);
+      font-size: 13px;
+    }
+    .email{
+      font-weight:850;
+      letter-spacing:.2px;
+    }
+    .footer{
+      margin-top:22px;
+      padding:18px 16px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .section{grid-template-columns:1fr}
+      .nav{border-radius: 18px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Bright Start</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Navegação">
+        <a href="#sobre">Sobre</a>
+        <a href="#videos">Vídeos</a>
+        <a href="#contato">Contato</a>
+        <a class="cta" href="#videos">Começar</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="sobre">
+        <div class="panel hero-main">
+          <div class="badge"><span class="dot" aria-hidden="true"></span> Aprenda mais com tecnologia, passo a passo</div>
+          <h1>Um lugar simples para estudar, praticar e crescer usando tecnologia.</h1>
+          <p class="lead">
+            O <strong>Bright Start</strong> foi pensado para ajudar estudantes a aprender com confiança:
+            usando vídeos curtos, orientações claras e suporte quando necessário.
+            Aqui, a tecnologia vira uma ponte para o seu aprendizado — não uma barreira.
+          </p>
+
+          <div class="actions">
+            <a class="btn primary" href="#videos"><strong>▶</strong> Assistir aos vídeos</a>
+            <a class="btn" href="#contato">Falar com a equipe</a>
+          </div>
+
+          <p class="hint">Dica: salve este site nos favoritos para acessar sempre que precisar.</p>
+        </div>
+
+        <aside class="panel hero-side" aria-label="Resumo rápido">
+          <div class="mini">
+            <h3>O que você vai encontrar</h3>
+            <p>Conteúdo para estudar melhor, organizar tarefas e usar o dispositivo com segurança.</p>
+            <div class="tagrow">
+              <span class="tag">Vídeos rápidos</span>
+              <span class="tag">Orientações</span>
+              <span class="tag">Suporte</span>
+            </div>
+          </div>
+
+          <div class="mini">
+            <h3>Para estudantes</h3>
+            <p>Aprenda a pesquisar, criar trabalhos e apresentar atividades usando tecnologia.</p>
+          </div>
+
+          <div class="mini">
+            <h3>Objetivo</h3>
+            <p>Mais autonomia, mais aprendizado e mais oportunidades.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid" aria-label="Recursos principais">
+        <div class="card">
+          <div class="icon" aria-hidden="true">📚</div>
+          <h2>Aprendizado guiado</h2>
+          <p>Explicações diretas para você entender o que fazer e por que isso ajuda a aprender.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">🧠</div>
+          <h2>Hábitos de estudo</h2>
+          <p>Rotinas simples: foco, organização e revisão — para melhorar um pouco todo dia.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">🛡️</div>
+          <h2>Uso seguro</h2>
+          <p>Boas práticas para proteger suas contas, seus dados e sua privacidade.</p>
+        </div>
+      </section>
+
+      <section class="section" id="videos" aria-label="Seção de vídeos e orientações">
+        <div class="card">
+          <h2>Assista aos vídeos: como apresentar o dispositivo que você recebeu</h2>
+          <p>
+            Aqui você encontra uma sequência de vídeos para aprender a <strong>apresentar o dispositivo</strong>
+            (celular, tablet ou notebook) de forma clara — mostrando as funções, cuidados e como ele pode ajudar nos estudos.
+          </p>
+
+          <ul class="list">
+            <li>Como ligar, configurar e manter o dispositivo atualizado</li>
+            <li>Como usar apps úteis para estudar e organizar tarefas</li>
+            <li>Como preparar uma apresentação simples (introdução, demonstração, conclusão)</li>
+            <li>Cuidados básicos: bateria, armazenamento e segurança</li>
+          </ul>
+
+          <div class="callout">
+            <strong>Observação:</strong> você pode trocar os textos abaixo por links reais dos vídeos quando tiver.
+            <br><br>
+            <span style="opacity:.9">Exemplo:</span>
+            <ul class="list" style="margin-top:6px">
+              <li>Vídeo 1 — Primeiros passos no dispositivo</li>
+              <li>Vídeo 2 — Apps para estudar melhor</li>
+              <li>Vídeo 3 — Como apresentar seu dispositivo</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" id="contato">
+          <h2>Dúvidas? Entre em contato por e-mail</h2>
+          <p>
+            Se você tiver perguntas sobre o conteúdo, dificuldades com o dispositivo
+            ou precisar de orientação, fale com a equipe do Bright Start.
+          </p>
+
+          <div class="callout">
+            E-mail de contato:
+            <div class="email" style="margin-top:6px;">
+              <a href="mailto:contato@bright-start.org">contato@bright-start.org</a>
+            </div>
+            <div style="margin-top:8px; color: rgba(255,255,255,.72); font-size:13px;">
+              (Se quiser, substitua pelo e-mail oficial do projeto.)
+            </div>
+          </div>
+
+          <ul class="list">
+            <li>Inclua seu nome e turma (se tiver).</li>
+            <li>Explique o que aconteceu e, se possível, mande um print.</li>
+            <li>Conte qual dispositivo você está usando (celular/tablet/notebook).</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="footer" aria-label="Rodapé">
+        <div>© <span>Bright Start</span> — Educação e tecnologia para apoiar estudantes.</div>
+        <div>
+          <a href="#sobre" style="text-decoration:none; color:inherit;">Voltar ao topo ↑</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
